@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
-<head><title>Webserver test page</title>
+<head><title>IT Asset Management System</title>
 <style>
 th { text-align: left; }
 
@@ -16,9 +16,27 @@ th, td {
 </head>
 
 <body>
-<h1>Webserver test page.</h1>
+<h1>System for registering new IT assets for ease of tracking</h1>
 
-<p>This page demonstrates that the webserver on your VM is generating content.</p>
+<h3>Fill in the form with new asset details </h3>
+<form>
+  <label for="assetID">AssetID:</label><br>
+  <input type="text" id="assetID" name="assetID"><br>
+  <label for="assetType">AssetType:</label><br>
+  <input type="text" id="assetType" name="assetType"><br>
+  <label for="brand">Brand:</label><br>
+  <input type="text" id="brand" name="brand"><br>
+  <label for="modelNo">Model Number:</label><br>
+  <input type="text" id="modelNo" name="modelNo"><br>
+  <label for="serialNo">Serial Number:</label><br>
+  <input type="text" id="serialNo" name="serialNo"><br>
+  <label for="datePurchased">Date Purchased:</label><br>
+  <input type="text" id="datePurchased" name="datePurchased"><br>
+  <label for="location">Location:</label><br>
+  <input type="text" id="location" name="location"><br>
+  <input type="reset">
+  <input type="submit" value="Submit">
+</form>
 
 <p>You likely now want to <a href="test-database.php">proceed to your webserver's
 database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>

@@ -18,15 +18,15 @@ th, td {
 <body>
 <h1>Database test page</h1>
 
-<p>Showing contents of papers table:</p>
+<p>Asset Management Database</p>
 
 <table border="1">
-<tr><th>Paper code</th><th>Paper name</th></tr>
+<tr><th>AssetID</th><th>AssetType</th><th>Brand</th><th>ModelNumber</th><th>SerialNumber</th><th>DatePurchased</th><th>Location</th></tr>
 
 <?php
  
 $db_host   = '192.168.56.12';
-$db_name   = 'fvision';
+$db_name   = 'assets';
 $db_user   = 'webuser';
 $db_passwd = 'insecure_db_pw';
 
