@@ -34,10 +34,10 @@ $pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
 
 $pdo = new PDO($pdo_dsn, $db_user, $db_passwd);
 
-$q = $pdo->query("SELECT * FROM papers");
+$q = $pdo->query("SELECT * FROM assetmn");
 
 while($row = $q->fetch()){
-  echo "<tr><td>".$row["code"]."</td><td>".$row["name"]."</td></tr>\n";
+  echo "<tr><td>".$row["assetID"]."</td><td>".$row["assetType"]."</td><td>".$row["brand"]."</td><td>".$row["modelno"]."</td><td>".$row["serialno"]."</td><td>".$row["datepurchased"]."</td><td>".$row["location"]."</td></tr>\n";
 }
 
 ?>
