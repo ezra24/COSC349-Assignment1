@@ -4,7 +4,7 @@
 apt-get update
       
 # We create a shell variable MYSQL_PWD that contains the MySQL root password
-export MYSQL_PWD='insecure_mysqlroot_pw'
+export MYSQL_PWD='samoa1234'
 
 # If you run the `apt-get install mysql-server` command
 # manually, it will prompt you to enter a MySQL root
@@ -18,6 +18,7 @@ echo "mysql-server mysql-server/root_password_again password $MYSQL_PWD" | debco
 
 # Install the MySQL database server.
 apt-get -y install mysql-server
+
 # On normal VMs MySQL server will now be running, but starting
 # the service explicitly even if it's started causes no warnings.
 # (... and it _is_ necessary for some Docker testing I'm doing)
@@ -25,24 +26,24 @@ service mysql start
 
 # Run some setup commands to get the database ready to use.
 # First create a database.
-echo "CREATE DATABASE assets;" | mysql
+echo "CREATE DATABASE assetmanagement;" | mysql
 
 # Then create a database user "webuser" with the given password.
-echo "CREATE USER 'webuser'@'%' IDENTIFIED BY 'insecure_db_pw';" | mysql
+echo "CREATE USER 'webuser'@'%' IDENTIFIED BY 'samoa1234';" | mysql
 
 # Grant all permissions to the database user "webuser" regarding
-# the "assets" database that we just created, above.
-echo "GRANT ALL PRIVILEGES ON assets.* TO 'webuser'@'%'" | mysql
+# the "assetmanagement" database that we just created, above.
+echo "GRANT ALL PRIVILEGES ON assetmanagement.* TO 'webuser'@'%'" | mysql
 
 # Set the MYSQL_PWD shell variable that the mysql command will
 # try to use as the database password ...
-export MYSQL_PWD='insecure_db_pw'
+export MYSQL_PWD='samoa1234'
 
 # ... and run all of the SQL within the setup-database.sql file,
 # which is part of the repository containing this Vagrantfile, so you
 # can look at the file on your host. The mysql command specifies both
-# the user to connect as (webuser) and the database to use (assets).
-cat /vagrant/setup-database.sql | mysql -u webuser assets
+# the user to connect as (webuser) and the database to use (assetmanagement).
+cat /vagrant/setup-database.sql | mysql -u webuser assetmanagement
 
 # By default, MySQL only listens for local network requests,
 # i.e., that originate from within the dbserver VM. We need to

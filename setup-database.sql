@@ -1,5 +1,7 @@
-CREATE TABLE assetmn (
-  assetID varchar(7),
+DROP TABLE IF EXISTS papers;
+
+CREATE TABLE assets (
+  assetID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
   assetType varchar(50) NOT NULL,
   brand varchar(20),
   modelno varchar(20),
@@ -7,7 +9,10 @@ CREATE TABLE assetmn (
   datepurchased varchar(10),
   location varchar(10),
   PRIMARY KEY (assetID)
-);
+)
+AUTO_INCREMENT 0001;
 
-INSERT INTO assetmn VALUES ('AST00001','CPU','Dell','Optiplex 780', 'DGK8H63','07/08/2022','Level 1');
-INSERT INTO assetmn VALUES ('AST00002','Mouse','Lenovo','M-U0025-O', 'LZ123330BGC','28/06/2022','Level 3');
+INSERT INTO assets (assetID, assetType, brand, modelno, serialno, datepurchased, location)
+	VALUES ('0001','CPU','Dell','Optiplex 780', 'DGK8H63','07/08/2022','Level 1');
+INSERT INTO assets (assetID, assetType, brand, modelno, serialno, datepurchased, location)
+	VALUES ('0002','Mouse','Lenovo','M-U0025-O', 'LZ123330BGC','28/06/2022','Level 3');
