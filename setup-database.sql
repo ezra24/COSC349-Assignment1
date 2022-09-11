@@ -1,11 +1,11 @@
 CREATE TABLE assets (
   assetID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  assetType varchar(50) NOT NULL,
-  brand varchar(20),
-  modelno varchar(20),
-  serialno varchar(20),
+  assetType varchar(255) NOT NULL,
+  brand varchar(255),
+  modelno varchar(255),
+  serialno varchar(255),
   datepurchased date NOT NULL,
-  location varchar(10)
+  location varchar(255)
 )
 AUTO_INCREMENT=0001;
 

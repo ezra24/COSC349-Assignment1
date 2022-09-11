@@ -10,7 +10,7 @@
 	$db_connection = mysqli_connect('192.168.56.12', 'user-1', 'samoa1234', 'assetmanagement');
 	
 	/* Confirm connection to database */
-	if(!$db_connection) {
+	if($db_connection === false) {
 		die("ERROR: Connection to database failed. " . mysqli_connect_error());
 	}
 	
@@ -27,7 +27,7 @@
 	if(mysqli_query($db_connection, $sql)) {
 		echo "Entry added successfully to Asset Management Database. </br>";
 	} else {
-		echo "Failed to add asset. Please check again";
+		echo "Failed to add asset. Please check again" . mysqli_error($db_connection);
 	}
 	
 	mysqli_close($db_connection);

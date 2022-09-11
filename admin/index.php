@@ -16,13 +16,27 @@ th, td {
 </head>
 
 <body>
-<h1>Administrative Tool for reviewing of entries into Asset Management Database</h1>
+<h2>Asset Management Database</h2>
+<table border="5">
+<tr><th>AssetID</th><th>AssetType</th><th>Brand</th><th>ModelNumber</th><th>SerialNumber</th><th>DatePurchased</th><th>Location</th></tr>
 
+<!--information from database-->
+<?php 
+$db_host   = '192.168.56.12';
+$db_name   = 'assetmanagement';
+$db_user   = 'user-1';
+$db_passwd = 'samoa1234';
 
-<p>You likely now want to <a href="test-database.php">proceed to your webserver's
-database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
+$pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
 
-<p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
+$pdo = new PDO($pdo_dsn, $db_user, $db_passwd);
 
+$q = $pdo->query("SELECT * FROM assets");
+
+while($row = $q->fetch()){
+  echo "<tr><td>".$row["assetID"]."</td><td>".$row["assetType"]."</td><td>".$row["brand"]."</td><td>".$row["modelno"]."</td><td>".$row["serialno"]."</td><td>".$row["datepurchased"]."</td><td>".$row["location"]."</td></tr>\n";
+}
+?>
+</table>
 </body>
 </html>

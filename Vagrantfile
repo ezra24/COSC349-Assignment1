@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# A Vagrantfile to set up two VMs, a webserver and a database server,
-# connected together using an internal network with manually-assigned
+# A Vagrantfile to set up three VMs, a webserver and a database server,
+# and admin webserver, connected together using an internal network with manually-assigned
 # IP addresses for the VMs.
 
 Vagrant.configure("2") do |config|
@@ -18,6 +18,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "webserver" do |webserver|
     # These are options specific to the webserver VM
     webserver.vm.hostname = "webserver"
+	
+	config.vm.boot_timeout = 3200
     
     # This type of port forwarding has been discussed elsewhere in
     # labs, but recall that it means that our host computer can
@@ -60,31 +62,17 @@ Vagrant.configure("2") do |config|
   #Second webserver for administrative work
   #named "adminserver"
   config.vm.define "adminserver" do |adminserver|
-    # These are options specific to the webserver VM
+    # These are options specific to the adminserver VM
     adminserver.vm.hostname = "adminserver"
     
-    # This type of port forwarding has been discussed elsewhere in
-    # labs, but recall that it means that our host computer can
-    # connect to IP address 127.0.0.1 port 8080, and that network
-    # request will reach our webserver VM's port 80.
     adminserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
-    
-    # We set up a private network that our VMs will use to communicate
-    # with each other. Note that I have manually specified an IP
-    # address for our webserver VM to have on this internal network,
-    # too. There are restrictions on what IP addresses will work, but
-    # a form such as 192.168.2.x for x being 11, 12 and 13 (three VMs)
-    # is likely to work.
+ 
     adminserver.vm.network "private_network", ip: "192.168.56.13"
 
     # This following line is only necessary in the CS Labs... but that
     # may well be where markers mark your assignment.
     adminserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
-    # Now we have a section specifying the shell commands to provision
-    # the webserver VM. Note that the file test-website.conf is copied
-    # from this host to the VM through the shared folder mounted in
-    # the VM at /vagrant
     adminserver.vm.provision "shell", path: "build-adminserver-vm.sh"
   end
 

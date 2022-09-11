@@ -19,29 +19,23 @@ th, td {
 <h1>System for registering new IT assets for ease of tracking</h1>
 
 <h3>Fill in the form with new asset details </h3>
-<form>
-  <label for="assetID">AssetID:</label><br>
-  <input type="text" id="assetID" name="assetID"><br>
+<form method="post" action="insert.php" target="_blank">
   <label for="assetType">AssetType:</label><br>
-  <input type="text" id="assetType" name="assetType"><br>
+  <input type="text" id="assetType" name="assetType" required="required"><br>
   <label for="brand">Brand:</label><br>
-  <input type="text" id="brand" name="brand"><br>
+  <input type="text" id="brand" name="brand" required="required"><br>
   <label for="modelNo">Model Number:</label><br>
-  <input type="text" id="modelNo" name="modelNo"><br>
+  <input type="text" id="modelNo" name="modelNo" required="required"><br>
   <label for="serialNo">Serial Number:</label><br>
-  <input type="text" id="serialNo" name="serialNo"><br>
+  <input type="text" id="serialNo" name="serialNo" required="required"><br>
   <label for="datePurchased">Date Purchased:</label><br>
-  <input type="text" id="datePurchased" name="datePurchased"><br>
+  <input type="date" id="datePurchased" name="datePurchased" required="required"><br>
   <label for="location">Location:</label><br>
-  <input type="text" id="location" name="location"><br>
+  <input type="text" id="location" name="location" required="required" placeholder="Level 1 or Level 2"><br>
   <input type="reset">
   <input type="submit" value="Submit">
 </form>
 
-<p>You likely now want to <a href="test-database.php">proceed to your webserver's
-database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
-
-<p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
 
 </body>
 </html>
